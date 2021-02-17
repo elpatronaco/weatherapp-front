@@ -1,0 +1,24 @@
+.card-wrapper {
+    display: flex;
+    width: auto;
+    height: auto;
+    padding: 10px;
+    flex-direction: column;
+    border-right: solid 1px black;
+    cursor: pointer;
+}
+
+.text-day {
+    font-size: large;
+    color: #42bed0;
+}
+
+.text-month {
+    font-size: large;
+    color: darkslategrey;
+}
+
+.text-temperature {
+    font-size: xx-large;
+    color: black;
+}
