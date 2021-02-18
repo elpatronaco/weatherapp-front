@@ -1,45 +1,22 @@
-import { useEffect, useMemo } from 'react'
-import { dayNames, monthNames } from '../../helpers'
-import { IWeatherCard, WEATHERTYPE } from '../../models'
+import { useMemo } from 'react'
+import { dayNames, monthNames, getWeatherIcon } from '../../helpers'
+import { IWeatherCard } from '../../models'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {
-  faCloud,
-  IconDefinition,
-  faTemperatureHigh,
-  faCloudRain,
-  faPooStorm,
-  faSun
-} from '@fortawesome/free-solid-svg-icons'
 import './styles.css'
-
-const getWeatherIcon = (weather: WEATHERTYPE): IconDefinition => {
-  switch (weather) {
-    case WEATHERTYPE.CLOUDY:
-      return faCloud
-    case WEATHERTYPE.RAINY:
-      return faCloudRain
-    case WEATHERTYPE.STORMY:
-      return faPooStorm
-    case WEATHERTYPE.SUNNY:
-      return faSun
-    default:
-      return faTemperatureHigh
-  }
-}
 
 const WeatherCard = ({ date, focused, hourlyTemps, weather }: IWeatherCard) => {
   const parsedDate = useMemo(() => new Date(date), [date])
 
   return (
-    <div className="card-wrapper" style={{ backgroundColor: focused ? 'white' : '#F7F6F5' }}>
-      <h2 className="text-day">
+    <div className="card body p-3 border-0 rounded card-wrapper d-flex align-items-center">
+      <p className="display-4 text-center text-white">
         {dayNames[parsedDate.getDay() !== 0 ? parsedDate.getDay() - 1 : 6]}
-      </h2>
-      <h2 className="text-month">{`${parsedDate.getDate()}th, ${
-        monthNames[parsedDate.getMonth() - 1]
-      }`}</h2>
-      <FontAwesomeIcon icon={faCloud} size="7x" />
-      <h1 className="text-temperature">
+      </p>
+      <p className="lead text-center text-white">
+        <b>{`${parsedDate.getDate()}th, ${monthNames[parsedDate.getMonth() - 1]}`}</b>
+      </p>
+      <FontAwesomeIcon icon={getWeatherIcon(weather)} color="white" size="4x" />
+      <h1 className="text-white">
         {focused
           ? `${hourlyTemps[new Date().getHours()]} Cº`
           : `${Math.max(...hourlyTemps)}º/${Math.min(...hourlyTemps)}º`}

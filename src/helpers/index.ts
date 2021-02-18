@@ -1,3 +1,13 @@
+import { IconProp } from '@fortawesome/fontawesome-svg-core'
+import {
+  faCloud,
+  faCloudRain,
+  faPooStorm,
+  faSun,
+  faTemperatureHigh
+} from '@fortawesome/free-solid-svg-icons'
+import { WEATHERTYPE } from '../models'
+
 export const dayNames: string[] = [
   'Monday',
   'Tuesday',
@@ -40,4 +50,19 @@ export const addDays = (date: Date, amount: number): Date => {
   }
 
   return d
+}
+
+export const getWeatherIcon = (weather: WEATHERTYPE): IconProp => {
+  switch (weather) {
+    case WEATHERTYPE.CLOUDY:
+      return faCloud
+    case WEATHERTYPE.RAINY:
+      return faCloudRain
+    case WEATHERTYPE.STORMY:
+      return faPooStorm
+    case WEATHERTYPE.SUNNY:
+      return faSun
+    default:
+      return faTemperatureHigh
+  }
 }

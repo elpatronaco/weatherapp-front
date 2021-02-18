@@ -4,8 +4,13 @@
   height: auto;
   padding: 10px;
   flex-direction: column;
-  border-right: solid 1px black;
   cursor: pointer;
+  background: transparent !important;
+  /* border: solid 1px whitesmoke; */
+  transition-duration: 200ms;
+}
+.card-wrapper:hover {
+  background-color: rgba(255, 255, 255, 0.2) !important;
 }
 
 .text-day {
@@ -15,7 +20,7 @@
 
 .text-month {
   font-size: large;
-  color: darkslategrey;
+  color: lightyellow;
 }
 
 .text-temperature {

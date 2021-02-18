@@ -2,7 +2,7 @@ import axios from 'axios'
 import { ICityDto, IResponse, IWeatherDto, IWeatherQuery } from '../models'
 
 const instance = axios.create({
-  baseURL: process.env.API_URI || 'http://ec2-35-180-91-141.eu-west-3.compute.amazonaws.com/',
+  baseURL: process.env.API_URI || 'http://ec2-15-237-51-178.eu-west-3.compute.amazonaws.com:4000',
   headers: { 'Content-Type': 'application/json' }
 })
 

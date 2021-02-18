@@ -1,0 +1,7 @@
+.temp-card-wrapper {
+    display: flex;
+    width: auto;
+    height: auto;
+    padding: 10px;
+    flex-direction: column;
+}
