@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import { IWeatherDto } from '../../models'
 import './styles.css'
 
@@ -7,7 +8,7 @@ const WeatherInfo = ({ hourlyTemps }: IWeatherDto) => {
   return (
     <div className="row">
       {Array.from({ length: 8 }).map((item, i) => {
-        const hour = currDate.getHours() + i
+        const hour = currDate.getHours() + i + 1
         return (
           <>
             {hour <= 24 && (
@@ -20,7 +21,7 @@ const WeatherInfo = ({ hourlyTemps }: IWeatherDto) => {
                     {hour}
                     {hour <= 12 ? 'am' : 'pm'}
                   </p>
-                  <p className="display-4 text-white">{hourlyTemps[hour]} º</p>
+                  <p className="display-4 text-white">{hourlyTemps[hour - 1]}º</p>
                 </div>
               </div>
             )}
@@ -31,4 +32,4 @@ const WeatherInfo = ({ hourlyTemps }: IWeatherDto) => {
   )
 }
 
-export default WeatherInfo
+export default memo(WeatherInfo)

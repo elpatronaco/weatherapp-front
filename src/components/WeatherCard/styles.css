@@ -27,3 +27,18 @@
   font-size: smaller;
   color: white;
 }
+
+.close-btn {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: translate(50%, -50%);
+  z-index: 100;
+  transition-duration: 200ms;
+}
+
+.close-btn:hover {
+  color: red;
+}

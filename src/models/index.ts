@@ -1,3 +1,13 @@
+export interface IResponse<T> {
+  data: T
+}
+
+export interface IWeatherCard extends IWeatherDto {
+  authorized?: boolean
+  focused: boolean
+  deleteCallback?: (query: IWeatherQuery) => void
+}
+
 export interface IKey {
   pk: string
 }
@@ -24,14 +34,16 @@ export enum WEATHERTYPE {
   STORMY = 'Storm'
 }
 
+export interface ILoginData {
+  email: string
+  password: string
+}
+
+export interface IUserData extends ILoginData {
+  name: string
+  birthdate?: string
+}
+
 export interface ICityDto extends IKey, ICity {}
 
 export interface IWeatherDto extends IKey, IWeather {}
-
-export interface IResponse<T> {
-  data: T
-}
-
-export interface IWeatherCard extends IWeatherDto {
-  focused: boolean
-}
