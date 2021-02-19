@@ -1,4 +1,4 @@
-import { memo } from 'react'
+import { memo, Fragment } from 'react'
 import { IWeatherDto } from '../../models'
 import './styles.css'
 
@@ -10,7 +10,7 @@ const WeatherInfo = ({ hourlyTemps }: IWeatherDto) => {
       {Array.from({ length: 8 }).map((item, i) => {
         const hour = currDate.getHours() + i + 1
         return (
-          <>
+          <Fragment key={`weatherinfo-${i}`}>
             {hour <= 24 && (
               <div className="col">
                 <div
@@ -25,7 +25,7 @@ const WeatherInfo = ({ hourlyTemps }: IWeatherDto) => {
                 </div>
               </div>
             )}
-          </>
+          </Fragment>
         )
       })}
     </div>
