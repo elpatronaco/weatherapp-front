@@ -18,8 +18,7 @@ const WeatherInfo = ({ hourlyTemps }: IWeatherDto) => {
                   style={{ background: 'transparent' }}
                 >
                   <p className="display-5 text-white">
-                    {hour}
-                    {hour <= 12 ? 'am' : 'pm'}
+                    {hour <= 12 ? `${hour}am` : `${hour - 12}pm`}
                   </p>
                   <p className="display-4 text-white">{hourlyTemps[hour - 1]}º</p>
                 </div>

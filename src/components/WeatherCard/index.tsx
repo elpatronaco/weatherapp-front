@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { Fragment, useMemo, useState } from 'react'
 import { dayNames, monthNames, getWeatherIcon } from '../../helpers'
 import { IWeatherCard } from '../../models'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
@@ -37,11 +37,16 @@ const WeatherCard = ({
         <b>{`${parsedDate.getDate()}th, ${monthNames[parsedDate.getMonth() - 1]}`}</b>
       </p>
       <FontAwesomeIcon icon={getWeatherIcon(weather)} color="white" size="4x" />
-      <h1 className="text-white">
-        {focused
-          ? `${hourlyTemps[new Date().getHours()]} Cº`
-          : `${Math.max(...hourlyTemps)}º/${Math.min(...hourlyTemps)}º`}
-      </h1>
+
+      {focused ? (
+        <h1 className="text-white">{hourlyTemps[new Date().getHours()]}º</h1>
+      ) : (
+        <div className="row">
+          <h1 className="text-white">{Math.max(...hourlyTemps)}º</h1>
+          <hr />
+          <h1 style={{ color: 'lightskyblue' }}>{Math.min(...hourlyTemps)}º</h1>
+        </div>
+      )}
     </div>
   )
 }

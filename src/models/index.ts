@@ -47,3 +47,8 @@ export interface IUserData extends ILoginData {
 export interface ICityDto extends IKey, ICity {}
 
 export interface IWeatherDto extends IKey, IWeather {}
+
+export interface IAction {
+  type: string
+  payload?: any
+}
