@@ -1,5 +1,5 @@
-import axios from 'axios'
-import { ICityDto, IResponse, IWeatherDto, IWeatherQuery, ILoginData } from '../models'
+import axios, { AxiosResponse } from 'axios'
+import { ICityDto, IWeatherDto, IWeatherQuery, ILoginData } from '../models'
 
 const { REACT_APP_API_URI } = process.env
 
@@ -11,14 +11,14 @@ const instance = axios.create({
 const setBearer = (token: string) => (instance.defaults.headers.common['authorization'] = token)
 
 const CitiesService = {
-  getByPk: (pk: string): Promise<IResponse<ICityDto>> => instance.get(`/api/cities/${pk}`),
-  getAll: (): Promise<IResponse<ICityDto[]>> => instance.get('/api/cities')
+  getByPk: (pk: string): Promise<AxiosResponse<ICityDto>> => instance.get(`/api/cities/${pk}`),
+  getAll: (): Promise<AxiosResponse<ICityDto[]>> => instance.get('/api/cities')
 }
 
 const WeatherService = {
-  getByPk: ({ pk, date }: IWeatherQuery): Promise<IResponse<IWeatherDto>> =>
+  getByPk: ({ pk, date }: IWeatherQuery): Promise<AxiosResponse<IWeatherDto>> =>
     instance.get(`/api/weather/${pk}`, { params: { date } }),
-  getAll: (): Promise<IResponse<IWeatherDto[]>> => instance.get('/api/weather'),
+  getAll: (): Promise<AxiosResponse<IWeatherDto[]>> => instance.get('/api/weather'),
   deleteByPk: ({ pk, date }: IWeatherQuery) =>
     instance.delete(`/api/weather/${pk}`, { params: { date: date } })
 }
